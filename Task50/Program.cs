@@ -23,11 +23,11 @@ int[,] GetMatrix(int rowsCount, int columnsCount, int leftRange, int rightRange)
 
     Random rand = new Random();
 
-    for(int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for(int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i,j] = rand.Next(leftRange, rightRange + 1);
+            matrix[i, j] = rand.Next(leftRange, rightRange + 1);
         }
     }
 
@@ -36,27 +36,29 @@ int[,] GetMatrix(int rowsCount, int columnsCount, int leftRange, int rightRange)
 
 void PrintMatrix(int[,] matrix)
 {
-    for(int i = 0; i < matrix.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for(int j = 0; j < matrix.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write($"{matrix[i,j]} ");
+            Console.Write($"{matrix[i, j]} ");
         }
         Console.WriteLine();
     }
 }
 
-void FindElement(int [,] matrix, int a, int b)
+void FindElement(int[,] matrix, int rows, int columns)
 {
-    if (a < matrix.GetLength(0) && b < matrix.GetLength(1) && a > 0 && b > 0 )
-{
-    Console.WriteLine($"Элемент равен {matrix [a, b]}");
-}
-else 
-{
-    Console.WriteLine( "Такого элемента нет");
-}
-}
+ int newrows = matrix.GetLength(0);
+int newcolumns = matrix.GetLength(1); 
+    if (rows < newrows && columns < newcolumns)
+    {
+        Console.Write($"Элемент с индексами {rows},{columns} = {matrix[rows,columns]}");
+    }
+    else
+    {
+        Console.Write($"Элемента с индексами {rows},{columns} нет в массиве");
+    }
+}   
 
 int m = ReadNumber("Введите количество строк");
 int n = ReadNumber("Введите количество столбцов");
@@ -65,9 +67,9 @@ PrintMatrix(matr);
 Console.WriteLine();
 
 Console.Write("Введите номер строки: ");
-int a = Convert.ToInt32(Console.ReadLine());
+int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите номер столбца: ");
-int b = Convert.ToInt32(Console.ReadLine());
+int columns = Convert.ToInt32(Console.ReadLine());
+FindElement(matr, rows, columns);
 
 
-FindElement(matr, a, b);
